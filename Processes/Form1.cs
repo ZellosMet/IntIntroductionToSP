@@ -56,7 +56,7 @@ namespace Processes
 				proc_MyProcess.CloseMainWindow(); //Закрытие процесса
 			}
 			catch (Exception) { }
-			proc_MyProcess.Close(); // Освобождает ресурсы
+			proc_MyProcess.Close(); // Освобождает  ресурсы
 		}
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
