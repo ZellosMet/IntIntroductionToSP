@@ -87,6 +87,7 @@
 			this.l_ProcessInfo.Size = new System.Drawing.Size(57, 16);
 			this.l_ProcessInfo.TabIndex = 3;
 			this.l_ProcessInfo.Text = "Process";
+			this.l_ProcessInfo.Visible = false;
 			// 
 			// proc_MyProcess
 			// 
@@ -101,7 +102,8 @@
 			// lv_ProcessList
 			// 
 			this.lv_ProcessList.AllowColumnReorder = true;
-			this.lv_ProcessList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.lv_ProcessList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lv_ProcessList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.PID,
@@ -185,7 +187,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1129, 481);
+			this.ClientSize = new System.Drawing.Size(1129, 292);
 			this.Controls.Add(this.lv_ProcessList);
 			this.Controls.Add(this.l_ProcessInfo);
 			this.Controls.Add(this.btn_Stop);
