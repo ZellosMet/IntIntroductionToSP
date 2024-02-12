@@ -10,6 +10,7 @@ using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Processes
 {
@@ -135,7 +136,7 @@ namespace Processes
 					}
 				}
 				catch (Exception) {}
-				lv_ProcessList.Items.RemoveAt(index); //Удаление процесса из списка LiscView
+				lv_ProcessList.Items.RemoveAt(index); //Удаление процесса из списка ListView
 			}
 			catch (Exception) {}
 
