@@ -16,8 +16,8 @@ namespace Processes
 	public partial class Form1 : Form
 	{
 
-		[DllImport("user32.dll")]
-		internal static extern IntPtr SetForegroundWindow(IntPtr hWnd); //Подключение метода из сторонней библиотеки для вывода окна на передний план
+		[DllImport("user32.dll")] //Подключение метода из сторонней библиотеки для вывода окна на передний план
+		internal static extern IntPtr SetForegroundWindow(IntPtr hWnd); 
 
 		int index = 0; //Индекс по ListView
 		int pid = 0; //ID процесса
