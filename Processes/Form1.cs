@@ -114,7 +114,7 @@ namespace Processes
 
 			try//Попытка завершение процесса
 			{
-				if (lv_ProcessList.FocusedItem == null)//Проверка на установку фокуса на элемент ListView
+				if (lv_ProcessList.FocusedItem == null || lv_ProcessList.Items.Count == 1)//Проверка на установку фокуса на элемент ListView
 					index = lv_ProcessList.Items.Count - 1;
 				pid = Convert.ToInt32(lv_ProcessList.Items[index].SubItems[0].Text);//Получение ID процесса по индексу ListView
 				try
@@ -177,6 +177,23 @@ namespace Processes
 		{
 			for (int i = 0; i < lv_ProcessList.Items.Count; i++)//Проход по всему списку процессов в ListView
 				SelectItem(i);
+		}
+
+		private void lv_ProcessList_ColumnClick(object sender, ColumnClickEventArgs e)//Событие сортировки по столбцам
+		{
+			if (e.Column == ListViewColumnSort.SortColumn)
+			{
+				if (ListViewColumnSort.Order == SortOrder.Ascending)
+					ListViewColumnSort.Order = SortOrder.Descending;
+				else
+					ListViewColumnSort.Order = SortOrder.Ascending;
+			}
+			else
+			{
+				ListViewColumnSort.SortColumn = e.Column;
+				ListViewColumnSort.Order = SortOrder.Ascending;
+			}
+			this.lv_ProcessList.ListViewItemSorter = new ListViewColumnSort(e.Column);
 		}
 		/////////////////////////////////////////////////////////
 	}

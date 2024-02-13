@@ -126,6 +126,7 @@
 			this.lv_ProcessList.TabIndex = 4;
 			this.lv_ProcessList.UseCompatibleStateImageBehavior = false;
 			this.lv_ProcessList.View = System.Windows.Forms.View.Details;
+			this.lv_ProcessList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lv_ProcessList_ColumnClick);
 			this.lv_ProcessList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lv_ProcessList_ItemSelectionChanged);
 			// 
 			// PID
