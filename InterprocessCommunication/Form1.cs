@@ -23,10 +23,21 @@ namespace InterprocessCommunication
 		public static extern IntPtr SendMessage(IntPtr hWnd, uint uMsg, int wParam, [MarshalAs(UnmanagedType.LPStr)]string lParam);
 		List<Process> processes = new List<Process> ();
 		int count = 0;
+		string path;
+		public string Path
+		{	
+			get => path;
+			set 
+			{
+				path = value;
+				LoadAvailableAssemblies(path);
+			}
+		}
 		public Form1()
 		{
 			InitializeComponent();
-			LoadAvailableAssemblies();
+			Path = Application.StartupPath;
+			//LoadAvailableAssemblies(Path);
 			b_Stop.Enabled = false;
 			b_CloseWindow.Enabled = false;
 			b_Start.Enabled = false;
@@ -34,11 +45,12 @@ namespace InterprocessCommunication
 		}
 
 		///////////////////// МЕТОДЫ КЛАССА ///////////////////// 
-		void LoadAvailableAssemblies()
+		void LoadAvailableAssemblies(string path)
 		{
 			string except = new FileInfo(Application.ExecutablePath).Name;
 			except.Substring(0, except.IndexOf("."));
-			string[] files = Directory.GetFiles(Application.StartupPath, "*.lnk");
+			string[] files = Directory.GetFiles(path, "*.exe");
+			files = Directory.GetFiles(path, "*.lnk");
 			foreach (string file in files)
 			{
 				string fileName = new FileInfo(file).Name;
@@ -52,7 +64,7 @@ namespace InterprocessCommunication
 			processes.Add(proc);
 			if (Process.GetCurrentProcess().Id == GetParentProcessId(proc.Id))
 			{
-				MessageBox.Show(this, proc.ProcessName+" дочерний процесс текущего процесса.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				//MessageBox.Show(this, proc.ProcessName+" дочерний процесс текущего процесса.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				proc.EnableRaisingEvents = true;
 				proc.Exited += Proc_Exited;
 				SendMessage(proc.MainWindowHandle, WM_SETTEXT, 0, $"Child process #{count++}");
@@ -158,6 +170,12 @@ namespace InterprocessCommunication
 				b_CloseWindow.Enabled = true;
 				b_Refresh.Enabled = true;
 			}
+		}
+		private void b_ChooseDirectory_Click(object sender, EventArgs e)
+		{
+			lb_Assemblies.Items.Clear();
+			fbd_ChooseDirectory.ShowDialog();
+			Path = fbd_ChooseDirectory.SelectedPath;
 		}
 
 		/////////////////////////////////////////////////////////

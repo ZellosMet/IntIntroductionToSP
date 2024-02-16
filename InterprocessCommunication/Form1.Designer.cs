@@ -36,6 +36,8 @@
 			this.b_Stop = new System.Windows.Forms.Button();
 			this.b_CloseWindow = new System.Windows.Forms.Button();
 			this.b_Refresh = new System.Windows.Forms.Button();
+			this.b_ChooseDirectory = new System.Windows.Forms.Button();
+			this.fbd_ChooseDirectory = new System.Windows.Forms.FolderBrowserDialog();
 			this.SuspendLayout();
 			// 
 			// lb_Processes
@@ -116,11 +118,22 @@
 			this.b_Refresh.UseVisualStyleBackColor = true;
 			this.b_Refresh.Click += new System.EventHandler(this.b_Refresh_Click);
 			// 
+			// b_ChooseDirectory
+			// 
+			this.b_ChooseDirectory.Location = new System.Drawing.Point(350, 404);
+			this.b_ChooseDirectory.Name = "b_ChooseDirectory";
+			this.b_ChooseDirectory.Size = new System.Drawing.Size(120, 32);
+			this.b_ChooseDirectory.TabIndex = 8;
+			this.b_ChooseDirectory.Text = "Directory";
+			this.b_ChooseDirectory.UseVisualStyleBackColor = true;
+			this.b_ChooseDirectory.Click += new System.EventHandler(this.b_ChooseDirectory_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(810, 450);
+			this.Controls.Add(this.b_ChooseDirectory);
 			this.Controls.Add(this.b_Refresh);
 			this.Controls.Add(this.b_CloseWindow);
 			this.Controls.Add(this.b_Stop);
@@ -146,6 +159,8 @@
 		private System.Windows.Forms.Button b_Stop;
 		private System.Windows.Forms.Button b_CloseWindow;
 		private System.Windows.Forms.Button b_Refresh;
+		private System.Windows.Forms.Button b_ChooseDirectory;
+		private System.Windows.Forms.FolderBrowserDialog fbd_ChooseDirectory;
 	}
 }
 
