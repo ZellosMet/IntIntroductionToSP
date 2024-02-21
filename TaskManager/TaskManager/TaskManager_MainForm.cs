@@ -36,7 +36,7 @@ namespace TaskManager
 				string[] items = null;
 				try
 				{
-					items = new string[] { process.ProcessName, process.Id.ToString(), $"{(process.PagedMemorySize64 / 1000000).ToString()} Mb", process.StartTime.ToString()};
+					items = new string[] { process.ProcessName, process.Id.ToString(), $"{(process.PagedMemorySize64 / 1000000).ToString()} Mb"};
 				}
 				catch (Exception){ }
 

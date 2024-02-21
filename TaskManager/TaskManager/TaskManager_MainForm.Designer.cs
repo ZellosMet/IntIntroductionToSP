@@ -31,8 +31,8 @@ namespace TaskManager
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Applications", System.Windows.Forms.HorizontalAlignment.Left);
-			System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Background process", System.Windows.Forms.HorizontalAlignment.Left);
+			System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Applications", System.Windows.Forms.HorizontalAlignment.Left);
+			System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Background process", System.Windows.Forms.HorizontalAlignment.Left);
 			this.lv_ProcessesList = new System.Windows.Forms.ListView();
 			this.NameProcesses = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.PID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,13 +58,13 @@ namespace TaskManager
             this.Memory,
             this.Create_time});
 			this.lv_ProcessesList.FullRowSelect = true;
-			listViewGroup5.Header = "Applications";
-			listViewGroup5.Name = "Applications";
-			listViewGroup6.Header = "Background process";
-			listViewGroup6.Name = "Background_process";
+			listViewGroup1.Header = "Applications";
+			listViewGroup1.Name = "Applications";
+			listViewGroup2.Header = "Background process";
+			listViewGroup2.Name = "Background_process";
 			this.lv_ProcessesList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup1,
+            listViewGroup2});
 			this.lv_ProcessesList.HideSelection = false;
 			this.lv_ProcessesList.Location = new System.Drawing.Point(12, 38);
 			this.lv_ProcessesList.MultiSelect = false;
@@ -112,7 +112,7 @@ namespace TaskManager
             this.tsm_File});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(464, 30);
+			this.menuStrip1.Size = new System.Drawing.Size(464, 28);
 			this.menuStrip1.TabIndex = 4;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -122,7 +122,7 @@ namespace TaskManager
             this.newProcessToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.tsm_File.Name = "tsm_File";
-			this.tsm_File.Size = new System.Drawing.Size(46, 26);
+			this.tsm_File.Size = new System.Drawing.Size(46, 24);
 			this.tsm_File.Text = "File";
 			// 
 			// newProcessToolStripMenuItem
@@ -141,7 +141,7 @@ namespace TaskManager
 			// 
 			// t_RefreshProcess
 			// 
-			this.t_RefreshProcess.Interval = 3000;
+			this.t_RefreshProcess.Interval = 500;
 			this.t_RefreshProcess.Tick += new System.EventHandler(this.t_RefreshProcess_Tick);
 			// 
 			// TaskManager
