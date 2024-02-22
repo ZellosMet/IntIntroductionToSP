@@ -10,19 +10,21 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TaskManager
 {
 	public partial class TaskManager : Form
 	{
 		string path_process;
+		PerformanceCounter cpuCounter;
+		PerformanceCounter ramCounter;
 		public TaskManager()
 		{
 			InitializeComponent();
 			b_EndProcess.Enabled = false;
 			LoadActiveProcesses();
-			t_RefreshProcess.Enabled = true;
+			//t_RefreshProcess.Enabled = true;
+			//label1.Text = cpuCounter.NextValue().ToString();
 		}
 
 		void LoadActiveProcesses()
@@ -33,20 +35,16 @@ namespace TaskManager
 
 			foreach (Process process in all_process)
 			{
+				cpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName, true);
+				ramCounter = new PerformanceCounter("Process", "Working Set", process.ProcessName);
 				string[] items = null;
-				try
-				{
-					items = new string[] { process.ProcessName, process.Id.ToString(), $"{(process.PagedMemorySize64 / 1000000).ToString()} Mb"};
-				}
-				catch (Exception){ }
+
+				items = new string[] { process.ProcessName, process.Id.ToString(), $"{Convert.ToString(Convert.ToInt32(ramCounter.NextValue() / 1000000))} Mb", cpuCounter.NextValue().ToString()};
 
 				lvi = new ListViewItem(items);
 				lv_ProcessesList.Items.Add(lvi);
 
-				if (process.MainWindowHandle == IntPtr.Zero)
-					lvi.Group = lv_ProcessesList.Groups["Background_process"];
-				else
-					lvi.Group = lv_ProcessesList.Groups["Applications"];
+				lvi.Group = (process.MainWindowHandle == IntPtr.Zero ? lv_ProcessesList.Groups["Background_process"] : lv_ProcessesList.Groups["Applications"]);
 			}
 		}
 		private void b_EndProcess_Click(object sender, EventArgs e)

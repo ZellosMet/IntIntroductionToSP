@@ -31,19 +31,20 @@ namespace TaskManager
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Applications", System.Windows.Forms.HorizontalAlignment.Left);
-			System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Background process", System.Windows.Forms.HorizontalAlignment.Left);
+			System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Applications", System.Windows.Forms.HorizontalAlignment.Left);
+			System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Background process", System.Windows.Forms.HorizontalAlignment.Left);
 			this.lv_ProcessesList = new System.Windows.Forms.ListView();
 			this.NameProcesses = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.PID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.Memory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.Create_time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.CPU = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.b_EndProcess = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.tsm_File = new System.Windows.Forms.ToolStripMenuItem();
 			this.newProcessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.t_RefreshProcess = new System.Windows.Forms.Timer(this.components);
+			this.label1 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -56,15 +57,15 @@ namespace TaskManager
             this.NameProcesses,
             this.PID,
             this.Memory,
-            this.Create_time});
+            this.CPU});
 			this.lv_ProcessesList.FullRowSelect = true;
-			listViewGroup1.Header = "Applications";
-			listViewGroup1.Name = "Applications";
-			listViewGroup2.Header = "Background process";
-			listViewGroup2.Name = "Background_process";
+			listViewGroup3.Header = "Applications";
+			listViewGroup3.Name = "Applications";
+			listViewGroup4.Header = "Background process";
+			listViewGroup4.Name = "Background_process";
 			this.lv_ProcessesList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
 			this.lv_ProcessesList.HideSelection = false;
 			this.lv_ProcessesList.Location = new System.Drawing.Point(12, 38);
 			this.lv_ProcessesList.MultiSelect = false;
@@ -89,10 +90,10 @@ namespace TaskManager
 			this.Memory.Text = "Memory";
 			this.Memory.Width = 93;
 			// 
-			// Create_time
+			// CPU
 			// 
-			this.Create_time.Text = "Create Time";
-			this.Create_time.Width = 94;
+			this.CPU.Text = "CPU";
+			this.CPU.Width = 94;
 			// 
 			// b_EndProcess
 			// 
@@ -141,14 +142,24 @@ namespace TaskManager
 			// 
 			// t_RefreshProcess
 			// 
-			this.t_RefreshProcess.Interval = 500;
+			this.t_RefreshProcess.Interval = 3000;
 			this.t_RefreshProcess.Tick += new System.EventHandler(this.t_RefreshProcess_Tick);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(185, 450);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(44, 16);
+			this.label1.TabIndex = 5;
+			this.label1.Text = "label1";
 			// 
 			// TaskManager
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(464, 475);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.b_EndProcess);
 			this.Controls.Add(this.lv_ProcessesList);
 			this.Controls.Add(this.menuStrip1);
@@ -174,7 +185,8 @@ namespace TaskManager
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private System.Windows.Forms.ColumnHeader Memory;
 		private System.Windows.Forms.Timer t_RefreshProcess;
-		private System.Windows.Forms.ColumnHeader Create_time;
+		private System.Windows.Forms.ColumnHeader CPU;
+		private System.Windows.Forms.Label label1;
 	}
 }
 
