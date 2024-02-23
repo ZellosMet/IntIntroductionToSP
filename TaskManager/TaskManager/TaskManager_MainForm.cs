@@ -23,9 +23,7 @@ namespace TaskManager
 			InitializeComponent();
 			b_EndProcess.Enabled = false;
 			LoadActiveProcesses();
-			t_RefreshProcess.Enabled = true;
-
-			//label1.Text = cpuCounter.NextValue().ToString();
+			//t_RefreshProcess.Enabled = true;
 		}
 
 		void LoadActiveProcesses()
@@ -33,23 +31,20 @@ namespace TaskManager
 			ListViewItem lvi = new ListViewItem();
 			Process[] all_process = Process.GetProcesses();
 			lv_ProcessesList.Items.Clear();
-			//cpuCounter = new PerformanceCounter("Process", "% Processor Time", "_Total");
-			//cpuCounter.NextValue();
-			//System.Threading.Thread.Sleep(1000);
 
 			foreach (Process process in all_process)
 			{
 				cpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName);
-				ramCounter = new PerformanceCounter("Process", "Working Set", process.ProcessName);
+				ramCounter = new PerformanceCounter("Process", "Working Set - Private", process.ProcessName);
 
 				string[] items = null;
 
-				items = new string[] { process.ProcessName, process.Id.ToString(), $"{Convert.ToString(Convert.ToInt32(ramCounter.NextValue() / 1000000))} Mb", cpuCounter.NextValue().ToString()};
+				items = new string[] { process.ProcessName, process.Id.ToString(), $"{Convert.ToString(Convert.ToInt32(ramCounter.NextValue()/1000000))} Mb", cpuCounter.NextValue().ToString()};
 
 				lvi = new ListViewItem(items);
+				lvi.Group = (process.MainWindowHandle == IntPtr.Zero ? lv_ProcessesList.Groups["Background_process"] : lv_ProcessesList.Groups["Applications"]);
 				lv_ProcessesList.Items.Add(lvi);
 
-				lvi.Group = (process.MainWindowHandle == IntPtr.Zero ? lv_ProcessesList.Groups["Background_process"] : lv_ProcessesList.Groups["Applications"]);
 			}
 		}
 		private void b_EndProcess_Click(object sender, EventArgs e)
