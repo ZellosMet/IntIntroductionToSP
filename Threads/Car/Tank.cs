@@ -28,6 +28,12 @@ namespace Car
 			this.volume = volume;
 			fuel_level = 0;
 		}
+		public double GiveFuel(double amount)
+		{
+			fuel_level -= amount;
+			if (fuel_level < 0) fuel_level = 0;
+			return fuel_level;
+		}
 		public void Info()
 		{
 			Console.WriteLine($"Tank volume: {volume}");
