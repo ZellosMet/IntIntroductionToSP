@@ -36,10 +36,10 @@
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
+			this.label1.AutoEllipsis = true;
 			this.label1.Location = new System.Drawing.Point(12, 9);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(44, 16);
+			this.label1.Size = new System.Drawing.Size(363, 61);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "label1";
 			// 
@@ -61,6 +61,7 @@
 			// pb_CopyProgress
 			// 
 			this.pb_CopyProgress.Location = new System.Drawing.Point(12, 82);
+			this.pb_CopyProgress.Maximum = 99;
 			this.pb_CopyProgress.Name = "pb_CopyProgress";
 			this.pb_CopyProgress.Size = new System.Drawing.Size(363, 40);
 			this.pb_CopyProgress.Step = 1;

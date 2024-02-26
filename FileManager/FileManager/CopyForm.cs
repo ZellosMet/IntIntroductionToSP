@@ -51,7 +51,6 @@ namespace FileManager
 
 		private void bgw_Copy_DoWork(object sender, DoWorkEventArgs e)
 		{ 
-			pb_CopyProgress.Value = 0;
 			FileInfo fi = new FileInfo(to_file_path);
 			if (fi.Exists)
 			{
@@ -66,12 +65,12 @@ namespace FileManager
 		private void bgw_Copy_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
 			pb_CopyProgress.Value = e.ProgressPercentage;
-			//if (pb_CopyProgress.Value == 100) Thread.Sleep(10000);
 			label2.Text = $"{pb_CopyProgress.Value.ToString()}%";
 		}
 
 		private void bgw_Copy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
+			//if (pb_CopyProgress.Value == 100) Thread.Sleep(2000);
 			main.LoadDirectory(main.tb_LeftPath, main.lv_LeftFileList);
 			main.LoadDirectory(main.tb_RightPath, main.lv_RightFileList);
 			this.Close();
