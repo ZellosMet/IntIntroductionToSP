@@ -15,7 +15,7 @@ namespace FileManager
 {
 	public partial class MainForm : Form
 	{
-		string default_path = @"C:\Users\Professional\Documents";
+		string default_path = /*@"C:\Users\Professional\Documents"*/ @"C:\Users\Zello\OneDrive\Документы";
 		string from_file;
 		string to_file;
 		public MainForm()

@@ -61,7 +61,6 @@
 			// pb_CopyProgress
 			// 
 			this.pb_CopyProgress.Location = new System.Drawing.Point(12, 82);
-			this.pb_CopyProgress.Maximum = 99;
 			this.pb_CopyProgress.Name = "pb_CopyProgress";
 			this.pb_CopyProgress.Size = new System.Drawing.Size(363, 40);
 			this.pb_CopyProgress.Step = 1;

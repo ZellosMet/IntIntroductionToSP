@@ -46,7 +46,6 @@
 			this.b_RightBrowse = new System.Windows.Forms.Button();
 			this.fbd_LeftBrowse = new System.Windows.Forms.FolderBrowserDialog();
 			this.fbd_RightBrowse = new System.Windows.Forms.FolderBrowserDialog();
-			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lv_LeftFileList
@@ -175,21 +174,11 @@
 			this.b_RightBrowse.UseVisualStyleBackColor = true;
 			this.b_RightBrowse.Click += new System.EventHandler(this.b_RightBrowse_Click);
 			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(477, 13);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(44, 16);
-			this.label1.TabIndex = 8;
-			this.label1.Text = "label1";
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1128, 553);
-			this.Controls.Add(this.label1);
 			this.Controls.Add(this.b_RightBrowse);
 			this.Controls.Add(this.b_LeftBrowse);
 			this.Controls.Add(this.tb_RightPath);
@@ -223,7 +212,6 @@
 		private System.Windows.Forms.ColumnHeader c_RFileType;
 		private System.Windows.Forms.ColumnHeader c_LCreateDate;
 		private System.Windows.Forms.ColumnHeader c_RCreateDate;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ColumnHeader c_LSize;
 		private System.Windows.Forms.ColumnHeader c_RSize;
 	}
