@@ -28,18 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.pb_CopyProgress = new System.Windows.Forms.ProgressBar();
 			this.label1 = new System.Windows.Forms.Label();
 			this.bgw_Copy = new System.ComponentModel.BackgroundWorker();
+			this.label2 = new System.Windows.Forms.Label();
+			this.pb_CopyProgress = new System.Windows.Forms.ProgressBar();
 			this.SuspendLayout();
-			// 
-			// pb_CopyProgress
-			// 
-			this.pb_CopyProgress.Location = new System.Drawing.Point(12, 69);
-			this.pb_CopyProgress.Name = "pb_CopyProgress";
-			this.pb_CopyProgress.Size = new System.Drawing.Size(363, 27);
-			this.pb_CopyProgress.TabIndex = 0;
-			this.pb_CopyProgress.Value = 1;
 			// 
 			// label1
 			// 
@@ -56,13 +49,31 @@
 			this.bgw_Copy.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw_Copy_ProgressChanged);
 			this.bgw_Copy.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_Copy_RunWorkerCompleted);
 			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(331, 144);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(44, 16);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "label2";
+			// 
+			// pb_CopyProgress
+			// 
+			this.pb_CopyProgress.Location = new System.Drawing.Point(12, 82);
+			this.pb_CopyProgress.Name = "pb_CopyProgress";
+			this.pb_CopyProgress.Size = new System.Drawing.Size(363, 40);
+			this.pb_CopyProgress.Step = 1;
+			this.pb_CopyProgress.TabIndex = 3;
+			// 
 			// CopyForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(387, 135);
-			this.Controls.Add(this.label1);
+			this.ClientSize = new System.Drawing.Size(387, 169);
 			this.Controls.Add(this.pb_CopyProgress);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
 			this.Name = "CopyForm";
 			this.Text = "CopyForm";
 			this.ResumeLayout(false);
@@ -71,9 +82,9 @@
 		}
 
 		#endregion
-
-		private System.Windows.Forms.ProgressBar pb_CopyProgress;
 		private System.Windows.Forms.Label label1;
 		private System.ComponentModel.BackgroundWorker bgw_Copy;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ProgressBar pb_CopyProgress;
 	}
 }

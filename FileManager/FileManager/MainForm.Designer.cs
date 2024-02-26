@@ -26,17 +26,18 @@
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		private void InitializeComponent()
+		void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
 			this.lv_LeftFileList = new System.Windows.Forms.ListView();
 			this.c_LFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.c_LFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.c_LCreateDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.c_LSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.lv_RightFileList = new System.Windows.Forms.ListView();
 			this.c_RFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.c_RFileType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.c_RCreateDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.c_RSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.b_ToRight = new System.Windows.Forms.Button();
 			this.b_ToLeft = new System.Windows.Forms.Button();
 			this.tb_LeftPath = new System.Windows.Forms.TextBox();
@@ -46,9 +47,6 @@
 			this.fbd_LeftBrowse = new System.Windows.Forms.FolderBrowserDialog();
 			this.fbd_RightBrowse = new System.Windows.Forms.FolderBrowserDialog();
 			this.label1 = new System.Windows.Forms.Label();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.c_LSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.c_RSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
 			// lv_LeftFileList
@@ -84,6 +82,10 @@
 			this.c_LCreateDate.Text = "Data Create";
 			this.c_LCreateDate.Width = 97;
 			// 
+			// c_LSize
+			// 
+			this.c_LSize.Text = "Size";
+			// 
 			// lv_RightFileList
 			// 
 			this.lv_RightFileList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -114,6 +116,10 @@
 			// c_RCreateDate
 			// 
 			this.c_RCreateDate.Text = "Data Create";
+			// 
+			// c_RSize
+			// 
+			this.c_RSize.Text = "Size";
 			// 
 			// b_ToRight
 			// 
@@ -169,14 +175,6 @@
 			this.b_RightBrowse.UseVisualStyleBackColor = true;
 			this.b_RightBrowse.Click += new System.EventHandler(this.b_RightBrowse_Click);
 			// 
-			// fbd_LeftBrowse
-			// 
-			this.fbd_LeftBrowse.SelectedPath = "C:\\Users\\Zello\\OneDrive\\Документы\\";
-			// 
-			// fbd_RightBrowse
-			// 
-			this.fbd_RightBrowse.SelectedPath = "C:\\Users\\Zello\\OneDrive\\Документы\\";
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -186,19 +184,11 @@
 			this.label1.TabIndex = 8;
 			this.label1.Text = "label1";
 			// 
-			// c_LSize
-			// 
-			this.c_LSize.Text = "Size";
-			// 
-			// c_RSize
-			// 
-			this.c_RSize.Text = "Size";
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1128, 579);
+			this.ClientSize = new System.Drawing.Size(1128, 553);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.b_RightBrowse);
 			this.Controls.Add(this.b_LeftBrowse);
@@ -217,12 +207,12 @@
 
 		#endregion
 
-		private System.Windows.Forms.ListView lv_LeftFileList;
-		private System.Windows.Forms.ListView lv_RightFileList;
+		public System.Windows.Forms.ListView lv_LeftFileList;
+		public System.Windows.Forms.ListView lv_RightFileList;
 		private System.Windows.Forms.Button b_ToRight;
 		private System.Windows.Forms.Button b_ToLeft;
-		private System.Windows.Forms.TextBox tb_LeftPath;
-		private System.Windows.Forms.TextBox tb_RightPath;
+		public System.Windows.Forms.TextBox tb_LeftPath;
+		public System.Windows.Forms.TextBox tb_RightPath;
 		private System.Windows.Forms.Button b_LeftBrowse;
 		private System.Windows.Forms.Button b_RightBrowse;
 		private System.Windows.Forms.FolderBrowserDialog fbd_LeftBrowse;
@@ -234,7 +224,6 @@
 		private System.Windows.Forms.ColumnHeader c_LCreateDate;
 		private System.Windows.Forms.ColumnHeader c_RCreateDate;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ColumnHeader c_LSize;
 		private System.Windows.Forms.ColumnHeader c_RSize;
 	}
