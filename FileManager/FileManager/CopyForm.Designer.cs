@@ -29,9 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
-			this.bgw_Copy = new System.ComponentModel.BackgroundWorker();
+			this.bgw_CopyFile = new System.ComponentModel.BackgroundWorker();
 			this.label2 = new System.Windows.Forms.Label();
 			this.pb_CopyProgress = new System.Windows.Forms.ProgressBar();
+			this.bgw_CopyDirectory = new System.ComponentModel.BackgroundWorker();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -43,11 +44,11 @@
 			this.label1.TabIndex = 1;
 			this.label1.Text = "label1";
 			// 
-			// bgw_Copy
+			// bgw_CopyFile
 			// 
-			this.bgw_Copy.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_Copy_DoWork);
-			this.bgw_Copy.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw_Copy_ProgressChanged);
-			this.bgw_Copy.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_Copy_RunWorkerCompleted);
+			this.bgw_CopyFile.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_CopyFile_DoWork);
+			this.bgw_CopyFile.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw_CopyFile_ProgressChanged);
+			this.bgw_CopyFile.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_CopyFile_RunWorkerCompleted);
 			// 
 			// label2
 			// 
@@ -66,6 +67,10 @@
 			this.pb_CopyProgress.Step = 1;
 			this.pb_CopyProgress.TabIndex = 3;
 			// 
+			// bgw_CopyDirectory
+			// 
+			this.bgw_CopyDirectory.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_CopyDirectory_DoWork);
+			// 
 			// CopyForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -83,8 +88,9 @@
 
 		#endregion
 		private System.Windows.Forms.Label label1;
-		private System.ComponentModel.BackgroundWorker bgw_Copy;
+		private System.ComponentModel.BackgroundWorker bgw_CopyFile;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ProgressBar pb_CopyProgress;
+		private System.ComponentModel.BackgroundWorker bgw_CopyDirectory;
 	}
 }

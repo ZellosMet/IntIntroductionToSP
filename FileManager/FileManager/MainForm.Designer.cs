@@ -46,6 +46,7 @@
 			this.b_RightBrowse = new System.Windows.Forms.Button();
 			this.fbd_LeftBrowse = new System.Windows.Forms.FolderBrowserDialog();
 			this.fbd_RightBrowse = new System.Windows.Forms.FolderBrowserDialog();
+			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lv_LeftFileList
@@ -64,6 +65,7 @@
 			this.lv_LeftFileList.UseCompatibleStateImageBehavior = false;
 			this.lv_LeftFileList.View = System.Windows.Forms.View.Details;
 			this.lv_LeftFileList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lv_LeftFileList_ItemSelectionChanged);
+			this.lv_LeftFileList.DoubleClick += new System.EventHandler(this.lv_LeftFileList_DoubleClick);
 			this.lv_LeftFileList.Leave += new System.EventHandler(this.lv_LeftFileList_Leave);
 			// 
 			// c_LFileName
@@ -101,6 +103,7 @@
 			this.lv_RightFileList.UseCompatibleStateImageBehavior = false;
 			this.lv_RightFileList.View = System.Windows.Forms.View.Details;
 			this.lv_RightFileList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lv_RightFileList_ItemSelectionChanged);
+			this.lv_RightFileList.DoubleClick += new System.EventHandler(this.lv_RightFileList_DoubleClick);
 			this.lv_RightFileList.Leave += new System.EventHandler(this.lv_RightFileList_Leave);
 			// 
 			// c_RFileName
@@ -174,11 +177,21 @@
 			this.b_RightBrowse.UseVisualStyleBackColor = true;
 			this.b_RightBrowse.Click += new System.EventHandler(this.b_RightBrowse_Click);
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(417, 13);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(34, 16);
+			this.label1.TabIndex = 8;
+			this.label1.Text = "Test";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1128, 553);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.b_RightBrowse);
 			this.Controls.Add(this.b_LeftBrowse);
 			this.Controls.Add(this.tb_RightPath);
@@ -214,6 +227,7 @@
 		private System.Windows.Forms.ColumnHeader c_RCreateDate;
 		private System.Windows.Forms.ColumnHeader c_LSize;
 		private System.Windows.Forms.ColumnHeader c_RSize;
+		private System.Windows.Forms.Label label1;
 	}
 }
 
