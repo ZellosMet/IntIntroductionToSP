@@ -19,10 +19,10 @@ namespace FileManager
 		FileInfo to_file;
 		string from_file_path;
 		string to_file_path;
-		string target_directory_path;
+		string from_directory_path;
 		string to_directory_path;
-		//DirectoryInfo from_directory;
 		DirectoryInfo to_directory;
+		DirectoryInfo from_directory;
 		public CopyForm(string from_file_path, string to_file_path, MainForm main_form)
 		{
 			InitializeComponent();
@@ -36,28 +36,25 @@ namespace FileManager
 			bgw_CopyFile.WorkerSupportsCancellation = true;
 			label1.Text = $"Copy\nFrom {from_file.Name}\nTo {to_file.Name}";
 			bgw_CopyFile.RunWorkerAsync();
-			//Copy();
 		}
-		public CopyForm(string target_directory_path, string to_directory_path, MainForm main_form, bool directory)
+		public CopyForm(string from_directory_path, string to_directory_path, MainForm main_form, bool directory)
 		{
 			InitializeComponent();
 			main = this.Owner as MainForm;
 			main = main_form;
-			//this.from_directory_path = from_directory_path;
-			//this.to_directory_path = to_directory_path;
-			//this.from_directory = new DirectoryInfo(from_directory_path);
-			//this.to_directory = new DirectoryInfo(to_directory_path);
-			this.target_directory_path = target_directory_path;
+			this.from_directory_path = from_directory_path;
 			this.to_directory_path = to_directory_path;
-			//label1.Text = $"Copy\nFrom {from_file.Name}\nTo {to_file.Name}";
 			bgw_CopyDirectory.WorkerReportsProgress = true;
 			bgw_CopyDirectory.WorkerSupportsCancellation = true;
 			bgw_CopyDirectory.RunWorkerAsync();
 		}
-		void CopyDirectory(string from_directory, string to_directory)
+		void CopyDirectory(string from_directory_path, string to_directory_path)
 		{
-			string[] arr_dir = from_directory.Split('\\');
-			this.to_directory.CreateSubdirectory(to_directory + arr_dir[arr_dir.Length-1]);
+			DirectoryInfo to_new_directory = new DirectoryInfo(to_directory_path+"\\"+from_directory.Name);
+			foreach (DirectoryInfo i in from_directory.GetDirectories())
+			{
+				to_new_directory.CreateSubdirectory(i.Name);
+			}
 		}
 		void CopyFile(string from_file, string to_file)
 		{
@@ -103,30 +100,23 @@ namespace FileManager
 
 		private void bgw_CopyDirectory_DoWork(object sender, DoWorkEventArgs e)
 		{
-			CopyDirectory(target_directory_path, to_directory_path);
+			from_directory = new DirectoryInfo(from_directory_path);
+			to_directory = new DirectoryInfo(to_directory_path);
+			to_directory.CreateSubdirectory(from_directory.Name);
+			CopyDirectory(from_directory_path, to_directory_path);
 		}
 
-		//async void Copy()
-		//{
-		//	await Task.Run(()=>
-		//		{				
-		//			try
-		//			{
-		//				label1.Text = $"Copy\nFrom {from_file.Name}\nTo {to_file.Name}";
-		//				File.Copy(from_file.FullName, to_file.FullName);
-		//
-		//			}
-		//			catch (Exception)
-		//			{
-		//				label1.Text = $"Copy\n From {from_file.FullName}\nTo{to_file.FullName}";
-		//				DialogResult dr = MessageBox.Show("Такой файл существует. Заменить?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-		//				if (dr == DialogResult.Yes)
-		//					File.Copy(from_file.FullName, to_file.FullName, true);
-		//			}
-		//		}
-		//	);			
-		//	this.Close();
-		//}
+		private void bgw_CopyDirectory_ProgressChanged(object sender, ProgressChangedEventArgs e)
+		{
+			pb_CopyProgress.Value = e.ProgressPercentage;
+			label2.Text = $"{pb_CopyProgress.Value.ToString()}%";
+		}
 
+		private void bgw_CopyDirectory_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			main.LoadDirectory(main.tb_LeftPath, main.lv_LeftFileList);
+			main.LoadDirectory(main.tb_RightPath, main.lv_RightFileList);
+			this.Close();
+		}
 	}
 }

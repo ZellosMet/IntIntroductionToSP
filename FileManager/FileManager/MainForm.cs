@@ -19,6 +19,8 @@ namespace FileManager
 		string default_path = @"C:\Users\Professional\Documents" /*@"C:\Users\Zello\OneDrive\Документы"*/;
 		string from_file;
 		string to_file;
+		string from_directory;
+		string to_directory;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -91,11 +93,25 @@ namespace FileManager
 		}
 		void CopyFile(ListView from_lv, ListView to_lv, TextBox from_tb, TextBox to_tb)	//Метода вызова формы копирования
 		{
-			from_file = $@"{from_tb.Text}\{from_lv.SelectedItems[0].SubItems[0].Text}{from_lv.SelectedItems[0].SubItems[1].Text}";
-			to_file = $@"{to_tb.Text}\{from_lv.SelectedItems[0].SubItems[0].Text}{from_lv.SelectedItems[0].SubItems[1].Text}";
-			CopyForm copyfile = new CopyForm(from_file, to_file, this);
-			copyfile.Owner = this;
-			copyfile.Show();
+			CopyForm copy_file;
+			CopyForm copy_directory;
+			if (from_lv.SelectedItems[0].SubItems[1].Text != "Directory")
+			{
+				from_file = $@"{from_tb.Text}\{from_lv.SelectedItems[0].SubItems[0].Text}{from_lv.SelectedItems[0].SubItems[1].Text}";
+				to_file = $@"{to_tb.Text}\{from_lv.SelectedItems[0].SubItems[0].Text}{from_lv.SelectedItems[0].SubItems[1].Text}";
+				//CopyForm copy_file = new CopyForm(from_file, to_file, this);
+				copy_file = new CopyForm(from_file, to_file, this);
+				copy_file.Owner = this;
+				copy_file.Show();
+			}
+			else
+			{
+				from_directory = $@"{from_tb.Text}\{from_lv.SelectedItems[0].SubItems[0].Text}";
+				to_directory = $@"{to_tb.Text}";
+				copy_directory = new CopyForm(from_directory, to_directory, this, true);
+				copy_directory.Owner = this;
+				copy_directory.Show();
+			}
 		}
 		void MoveDirectory(TextBox tb, ListView lv) //Метод перехода между каталогами
 		{

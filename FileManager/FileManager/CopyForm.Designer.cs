@@ -70,6 +70,8 @@
 			// bgw_CopyDirectory
 			// 
 			this.bgw_CopyDirectory.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_CopyDirectory_DoWork);
+			this.bgw_CopyDirectory.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw_CopyDirectory_ProgressChanged);
+			this.bgw_CopyDirectory.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_CopyDirectory_RunWorkerCompleted);
 			// 
 			// CopyForm
 			// 
